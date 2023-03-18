@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics,mixins,viewsets,status
-from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine
-from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer,ReviewsSerializer,CuisineSerializer
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine,EventBooking,CulturalEvents
+from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer,ReviewsSerializer,CuisineSerializer,EventBookingSerializer,CulturalEventSerializer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -78,7 +78,18 @@ class ReviewViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.Retri
 class CuisineViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
     queryset=Cuisine.objects.all()
     serializer_class=CuisineSerializer
-    
+
+class EventBookViewSet(viewsets.GenericViewSet,mixins.RetrieveModelMixin,mixins.ListModelMixin,mixins.CreateModelMixin):
+    permission_classes=[IsAuthenticated]
+    serializer_class=EventBookingSerializer
+    queryset=EventBooking.objects.all()
+
+class EventViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
+    queryset=CulturalEvents.objects.all()
+    serializer_class=CulturalEventSerializer
+
+
+
 
     
 

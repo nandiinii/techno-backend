@@ -160,4 +160,25 @@ class Cuisine(models.Model):
     def __str__(self):
         return(self.food_name)
     
+class CulturalEvents(models.Model):
+    event_name=models.CharField(max_length=100)
+    event_artist=models.CharField(max_length=100)
+    event_image=CloudinaryField('image')
+    event_desc=models.TextField(max_length=500)
+    location=models.CharField(max_length=100)
+
+    def __str__(self):
+        return(self.event_name)
+
+class EventBooking(models.Model):
+    name_foreign=models.ForeignKey(CulturalEvents,on_delete=models.CASCADE)
+    user_foreign=models.ForeignKey(User,on_delete=models.CASCADE)
+    date_of_booking=models.DateField()
+
+    def __int__(self):
+        return(self.name_foreign)
+
+
+
+
 

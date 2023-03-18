@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine,CulturalEvents,EventBooking
 from rest_framework.permissions import IsAuthenticated
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -90,4 +90,19 @@ class CuisineSerializer(serializers.ModelSerializer):
     class Meta:
         model=Cuisine
         fields = '__all__'
+
+class CulturalEventSerializer(serializers.ModelSerializer):
+    event_image = serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=CulturalEvents
+        fields = '__all__'
+
+class EventBookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=EventBooking
+        fields='__all__'
+
+
+
+
 

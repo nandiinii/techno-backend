@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Trending,Place,Activities,Festival,Item,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine)
+from .models import (Trending,Place,Activities,Festival,Item,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine,EventBooking,CulturalEvents)
 
 # Register your models here.
 
@@ -15,3 +15,5 @@ admin.site.register(GuideDetail)
 admin.site.register(Contact)
 admin.site.register(Reviews)
 admin.site.register(Cuisine)
+admin.site.register(CulturalEvents)
+admin.site.register(EventBooking)
