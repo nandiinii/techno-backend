@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics,mixins,viewsets,status
-from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine,EventBooking,CulturalEvents
-from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer,ReviewsSerializer,CuisineSerializer,EventBookingSerializer,CulturalEventSerializer
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine,EventBooking,CulturalEvents,Workshop,WorkshopBooking
+from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer,ReviewsSerializer,CuisineSerializer,EventBookingSerializer,CulturalEventSerializer,WorkshopSerializer,WorkshopBookingSerializer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -87,6 +87,15 @@ class EventBookViewSet(viewsets.GenericViewSet,mixins.RetrieveModelMixin,mixins.
 class EventViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
     queryset=CulturalEvents.objects.all()
     serializer_class=CulturalEventSerializer
+
+class WorkshopViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
+    serializer_class=WorkshopSerializer
+    queryset=Workshop.objects.all()  
+
+class WorkshopBookingViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
+    permission_classes=[IsAuthenticated]
+    serializer_class=WorkshopBookingSerializer
+    queryset=WorkshopBooking.objects.all()    
 
 
 

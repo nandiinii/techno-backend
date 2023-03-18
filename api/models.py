@@ -178,7 +178,24 @@ class EventBooking(models.Model):
     def __int__(self):
         return(self.name_foreign)
 
+class Workshop(models.Model):
+    name=models.CharField(max_length=20)
+    pic = CloudinaryField('image')
+    organizer=models.CharField(max_length=20)
+    desc=models.TextField(max_length=1000)
+    location=models.CharField(max_length=20)
 
+    def __int__(self):
+        return(self.name)
+    
+class WorkshopBooking(models.Model):
+    workshop_foreign=models.ForeignKey(Workshop,on_delete=models.CASCADE)
+    user_foreign=models.ForeignKey(User,on_delete=models.CASCADE)
+    date_of_booking = models.DateField()
+
+    def __int__(self):
+        return(self.workshop_foreign)
+    
 
 
 
