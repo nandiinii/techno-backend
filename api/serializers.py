@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact
 from rest_framework.permissions import IsAuthenticated
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -25,3 +25,57 @@ class UserSerializer(serializers.ModelSerializer):
         model=User
         fields=['id','username','email']
 
+class TrendingSerializer(serializers.ModelSerializer):
+    place_image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=Trending
+        fields=['place_image']
+
+class PlaceSerializer(serializers.ModelSerializer):
+    place_image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=Place
+        fields='__all__'
+
+class ActivitiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Activities
+        fields='__all__'
+
+class FestivalSerializer(serializers.ModelSerializer):
+    festival_image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=Festival
+        fields='__all__'
+
+class GuideSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=GuideDetail
+        fields='__all__'
+
+class ItemSerializer(serializers.ModelSerializer):
+    item_image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=Item
+        fields='__all__'
+
+class PurchaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Purchase
+        fields='__all__'
+
+class AttractionSerializer(serializers.ModelSerializer):
+    image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=Attraction
+        fields='__all__'
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Booking
+        fields='__all__'
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Contact
+        fields='__all__'
