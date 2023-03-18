@@ -1,1 +1,1 @@
-web: gunicorn rootsapi.wsgi --log-file -
+web: gunicorn technobackend.wsgi --log-file -
