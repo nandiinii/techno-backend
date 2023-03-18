@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine
 from rest_framework.permissions import IsAuthenticated
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -84,4 +84,10 @@ class ReviewsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Reviews
         fields='__all__'
+
+class CuisineSerializer(serializers.ModelSerializer):
+    food_image = serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
+    class Meta:
+        model=Cuisine
+        fields = '__all__'
 

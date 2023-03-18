@@ -151,3 +151,13 @@ class Reviews(models.Model):
 
     def __str__(self):
         return(self.user_foreign)
+    
+class Cuisine(models.Model):
+    place_foreign =models.ForeignKey(Place,on_delete=models.CASCADE)
+    food_image = CloudinaryField('image')
+    food_name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return(self.food_name)
+    
+
