@@ -2,6 +2,7 @@ from django.db import models
 from distutils.command.upload import upload
 from email.policy import default
 from django.contrib.auth.models import (AbstractBaseUser,BaseUserManager,PermissionsMixin)
+from django.core.validators import MaxValueValidator, MinValueValidator
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
@@ -142,3 +143,11 @@ class Contact(models.Model):
 
     def __str__(self):
         return(self.subject)
+    
+class Reviews(models.Model):
+    user_foreign = models.ForeignKey(User,on_delete=models.CASCADE)
+    content = models.TextField(max_length=1500)
+    rating = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+
+    def __str__(self):
+        return(self.user_foreign)

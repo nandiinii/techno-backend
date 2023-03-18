@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews
 from rest_framework.permissions import IsAuthenticated
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -79,3 +79,9 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model=Contact
         fields='__all__'
+
+class ReviewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Reviews
+        fields='__all__'
+

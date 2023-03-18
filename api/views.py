@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics,mixins,viewsets,status
-from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact
-from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer
+from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews
+from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer,ReviewsSerializer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -69,3 +69,12 @@ class GuideDetailViewset(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.Cr
 class ContactViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.ListModelMixin):
     serializer_class=ContactSerializer
     queryset=Contact.objects.all()
+
+class ReviewViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
+    queryset=Reviews.objects.all()
+    serializer_class = ReviewsSerializer
+    permission_classes=[IsAuthenticatedOrReadOnly]
+
+    
+
+
