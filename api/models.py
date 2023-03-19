@@ -147,10 +147,11 @@ class Contact(models.Model):
 class Reviews(models.Model):
     user_foreign = models.ForeignKey(User,on_delete=models.CASCADE)
     content = models.TextField(max_length=1500)
+    place_foreign=models.CharField(max_length=30)
     rating = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
 
     def __str__(self):
-        return(self.user_foreign)
+        return(self.content)
     
 class Cuisine(models.Model):
     place_foreign =models.ForeignKey(Place,on_delete=models.CASCADE)
