@@ -29,7 +29,7 @@ class TrendingSerializer(serializers.ModelSerializer):
     place_image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
     class Meta:
         model=Trending
-        fields=['place_image']
+        fields='__all__'
 
 class PlaceSerializer(serializers.ModelSerializer):
     place_image=serializers.ImageField(max_length=None,allow_empty_file=False,use_url=True,required=False)
