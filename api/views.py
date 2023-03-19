@@ -3,6 +3,7 @@ from rest_framework import generics,mixins,viewsets,status
 from .models import User,Trending,Place,Activities,Item,Festival,Purchase,Attraction,Booking,GuideDetail,Contact,Reviews,Cuisine,EventBooking,CulturalEvents,Workshop,WorkshopBooking
 from .serializers import UserSerializer,RegisterSerializer,TrendingSerializer,PlaceSerializer,ActivitiesSerializer,FestivalSerializer,ItemSerializer,GuideSerializer,PurchaseSerializer,AttractionSerializer,BookingSerializer,ContactSerializer,ReviewsSerializer,CuisineSerializer,EventBookingSerializer,CulturalEventSerializer,WorkshopSerializer,WorkshopBookingSerializer
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
 from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 # Create your views here.
